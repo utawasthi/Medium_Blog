@@ -1,11 +1,15 @@
+import { Quote } from "../components/Quote"
+import { SigninAuth } from "../components/SigninAuth"
 
-
-const Signin = () => {
+const Signup = () => {
   return (
-    <div>
-      Sign In
+    <div className = 'grid grid-cols-1 lg:grid-cols-2'>
+      <div>
+        <SigninAuth/>
+      </div>
+        <Quote/>
     </div>
-  )
+ )
 }
 
-export default Signin
+export default Signup

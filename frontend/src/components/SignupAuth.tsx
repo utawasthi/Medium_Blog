@@ -30,7 +30,7 @@ export const SignupAuth = () => {
         <LabelledInput label = 'Username' 
           type = 'text' 
           placeholder = 'Enter your username' 
-          value = {postInputs.name || " "}
+          value = {postInputs.name || ""}
           onChange = {(e) => {
             setPostInputs(c => ({
               ...c , 
