@@ -8,7 +8,9 @@ const Signup = () => {
       <div>
         <SignupAuth />
       </div>
+      <div className = 'hidden lg:block'>
         <Quote/>
+      </div>
     </div>
  )
 }

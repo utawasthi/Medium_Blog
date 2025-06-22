@@ -7,7 +7,9 @@ const Signup = () => {
       <div>
         <SigninAuth/>
       </div>
-        <Quote/>
+        <div className = 'hidden lg:block'>
+          <Quote/>
+        </div>
     </div>
  )
 }
