@@ -1,10 +1,13 @@
 import { Hono } from 'hono';
+import { cors } from "hono/cors";
 import { userRouter } from './routes/userRoutes';
 import { blogRouter } from './routes/blogRoutes';
 
 // Create the main Hono app
 // 👇 Tell Hono about your Bindings
 const app = new Hono<{Bindings : Bindings}>();
+
+app.use('/*' , cors());
 
 // 👇 Define the environment types
 type Bindings = {

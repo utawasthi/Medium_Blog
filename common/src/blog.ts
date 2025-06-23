@@ -3,6 +3,7 @@ import z from 'zod'
 export const createBlogInput = z.object({
   title : z.string(),
   content : z.string(),
+  authorId : z.number(),
 });
 
 export const updateBlogInput = z.object({

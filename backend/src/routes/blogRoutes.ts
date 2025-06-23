@@ -162,8 +162,18 @@ blogRouter.get('/bulk', async (c) => {
 
   console.log("controller reached inside /bulk route");
 
-  const blogs = await prisma.blog.findMany();
-  // console.log("controller reached inside /bulk route");
+  const blogs = await prisma.blog.findMany({
+    select : {
+      content : true,
+      title : true,
+      id : true,
+      author : {
+        select : {
+          name : true,
+        }
+      }
+    }
+  });
 
   return c.json({
     success : true,

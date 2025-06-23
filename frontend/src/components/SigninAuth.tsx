@@ -2,7 +2,9 @@ import { LabelledInput } from "./LabelledInput"
 import { useState } from "react"
 import type { SigninInput } from "@utawasthi/common"
 import { Button } from "./Button"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { BACKEND_URL } from "../config"
 
 export const SigninAuth = () => {
   
@@ -10,6 +12,21 @@ export const SigninAuth = () => {
     email : '',
     password : ''
   });
+
+  const navigate = useNavigate();
+
+  const signinReq = async () => {
+    try{
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin` , postInputs);
+      if(response) console.log(response);
+      navigate('/blogs');
+    }
+    catch(error){
+      alert('User Does Not Exist');
+      console.log(error);
+      navigate('/signup');
+    }
+  }
 
   return <div className = 'flex flex-col justify-center h-screen'>
     <div className = 'flex flex-col justify-center items-center px-4 gap-2'>
@@ -48,7 +65,7 @@ export const SigninAuth = () => {
             }))
           }}
         />
-        <Button content = "Sign In"/>
+        <Button content = "Sign In" onClick = {signinReq}/>
       </div>
     </div>
   </div>

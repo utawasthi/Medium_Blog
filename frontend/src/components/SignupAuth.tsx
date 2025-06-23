@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { LabelledInput } from "./LabelledInput"
 import { useState } from "react"
 import type { SignupInput } from "@utawasthi/common"
 import { Button } from "./Button"
+import axios from "axios"
+import { BACKEND_URL } from "../config"
 
 export const SignupAuth = () => {
   
@@ -11,6 +13,20 @@ export const SignupAuth = () => {
     name : '',
     password : ''
   });
+
+  const navigate = useNavigate();
+
+  const signupReq = async () => {
+    try{
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup` , postInputs);
+      const jwt = response.data.jwt;
+      localStorage.setItem('token' , jwt);
+      navigate('/blogs');
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
 
   return <div className = 'flex flex-col justify-center gap-2 h-screen'>
     <div className = 'flex flex-col justify-center items-center px-4'>
@@ -61,7 +77,7 @@ export const SignupAuth = () => {
             }))
           }}
         />
-        <Button content = "Sign Up"/>
+        <Button content = "Sign Up" onClick = {signupReq}/>
       </div>
     </div>
   </div>

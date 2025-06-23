@@ -33,6 +33,7 @@ userRouter.post('/signup', async (c) => {
   try{ 
     const user = await prisma.user.create({
       data : {
+        name : body.name,
         email : body.email,
         password : body.password,
       }
@@ -79,6 +80,14 @@ userRouter.post('/signin', async (c) => {
         password : body.password,
       }
     });
+
+    if(!user){
+      c.status(400);
+      return c.json({
+        success : false,
+        message : "User doesn't exist",
+      });
+    }
 
     return c.json({
       success : true,
