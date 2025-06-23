@@ -1,1 +1,12 @@
-src
+# Default .npmignore for TypeScript packages
+src/
+*.ts
+!*.d.ts
+tsconfig*
+*.builder*
+jest*
+test/
+coverage/
+.vscode/
+.gitignore
+.npmrc
