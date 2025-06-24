@@ -7,8 +7,10 @@ interface AvatarProps {
 
 export const Avatar = ({name , width , height} : AvatarProps) => {
   return (
-    <div className = {`w-${width} h-${height} relative inline-flex items-center justify-center  overflow-hidden bg-gray-300 rounded-full cursor-pointer`}>
-      <span className = "font-medium text-gray-600 text-md">{(name && name.length > 0) ? (name[0]).toUpperCase() : "A"}</span>
+    <div className = {`relative inline-flex items-center justify-center w-${width} h-${height} overflow-hidden bg-gray-100 rounded-full`}>
+        <span className = "font-medium">
+          {name && name.length > 0 ? name[0] : "A"}
+        </span>
     </div>
   )
 }

@@ -13,7 +13,7 @@ export const BlogCard = (props : BlogCardProps) => {
 
   return <div className = 'border-b border-gray-300 m-2 p-5 flex flex-col gap-2'>
     <div className = 'bg-white flex items-center gap-1'>
-      <Avatar name = {authorName} height = '6' width = '6'/>
+      <Avatar name = {authorName} height = "8" width = "8"/>
       <div className = 'front-medium'>
         {authorName && authorName.length > 0 ? authorName : "Anonymous"}
       </div>
